@@ -1,11 +1,13 @@
 import React from "react";
+import MovieListEntry from "./MovieListEntry";
+
 
 function MovieList(props) {
- 
-    return(
-    <div>hello from movielist</div>
-    )
-
+  return(
+    <ul>
+      <MovieListEntry/>
+    </ul>
+  )
 };
 
 export default MovieList; 
