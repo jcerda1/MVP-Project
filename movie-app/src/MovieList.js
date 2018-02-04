@@ -4,11 +4,13 @@ import MovieListEntry from "./MovieListEntry";
 
 function MovieList(props) {
   return(
-    <ul>
+  	<div>
+    <div>
     {props.name.value.map(movie => 
-      <MovieListEntry name={movie.title} description={movie.overview} pic={movie.poster_path}/>
+      <MovieListEntry   movname={movie.title} description={movie.overview} pic={movie.poster_path}/>
     )}
-    </ul>
+    </div>
+    </div>
   )
 };
 
