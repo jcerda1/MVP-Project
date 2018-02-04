@@ -16,7 +16,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <MovieList name={this.state}/>
+        <h1 style={{"margin": "auto", "width": "50%", "border": "10px solid black", "padding" : "10px", "textAlign" : "center"}}>Movie App</h1>
+        <MovieList className= "App" name={this.state}/>
       </div>
     );
   }
