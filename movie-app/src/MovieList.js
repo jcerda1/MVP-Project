@@ -5,7 +5,7 @@ import MovieListEntry from "./MovieListEntry";
 function MovieList(props) {
   return(
     <ul>
-      <MovieListEntry/>
+      <MovieListEntry name={props.name.value}/>
     </ul>
   )
 };
