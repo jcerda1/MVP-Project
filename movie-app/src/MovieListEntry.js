@@ -7,18 +7,15 @@ class MovieListEntry extends Component {
   }
   render() {
     return(
-     <div className="gallery" >
-       <div style={{"padding": "10px", "border" : "4px solid black", "textAlign" : "center", "backgroundColor" : "#EDAE49"}}>{this.props.movname}</div>
+     <div  className="gallery" >
+       <div style={{"padding": "10px", "border" : "4px solid black", "backgroundColor" : "#EDAE49"}} >{this.props.movname}</div>
        <div>
-         <img style={{ "padding": "10px", "border" : "2px"}} src={`http://image.tmdb.org/t/p/w185/${this.props.pic}`} alt="Smiley face"/>
+         <img src={`http://image.tmdb.org/t/p/w185/${this.props.pic}`} alt="Smiley face"/>
        </div>
-       <div>
-         <div style={{"padding": "10px", "border" : "4px solid black","backgroundColor" : "#00A896"}}>{this.props.description}</div>
-       </div>
-      </div>
+     </div>
     )
   }
 };
 
 
-export default MovieListEntry; 
+export default MovieListEntry;  

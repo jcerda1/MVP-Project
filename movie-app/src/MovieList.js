@@ -4,14 +4,14 @@ import MovieListEntry from "./MovieListEntry";
 
 function MovieList(props) {
   return(
-  	<div>
-    <div>
+  	<div style={{ "display": "flex", "flex-wrap": "wrap"}}>
+   
     {props.name.value.map(movie => 
-      <MovieListEntry movname={movie.title} pic={movie.poster_path}/>
+      <MovieListEntry movname={movie.title} pic={movie.poster_path} desc={movie.overview}/>
     )}
-    </div>
+   
     </div>
   )
 };
 
-export default MovieList; 
+export default MovieList;  
