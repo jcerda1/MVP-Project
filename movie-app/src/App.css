@@ -25,6 +25,15 @@
  background-color : #D3D3D3
 }
 
+.movieApp {
+border-radius : 30px;
+margin: auto;
+width: 50%;
+border: 10px solid #003D5B;
+padding : 20px;
+text-align : center;
+background-color : #98FB98
+}
 /*div.desc {
     padding: 15px;
     text-align: center;

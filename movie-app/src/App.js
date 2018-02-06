@@ -22,7 +22,7 @@ class App extends Component {
   render() {
     return ( 
       <div>
-        <h1 style={{"borderRadius" : "30px", "margin": "auto", "width": "50%", "border": "10px solid #003D5B", "padding" : "20px", "textAlign" : "center", "backgroundColor" : "#98FB98"}}>Movie App</h1>
+        <h1 className="movieApp">Movie App</h1>
         <SearchBar/>
         <MovieList  click={this.handleClick} name={this.state}/>
       </div>
