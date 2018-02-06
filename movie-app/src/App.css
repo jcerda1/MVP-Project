@@ -34,6 +34,31 @@ padding : 20px;
 text-align : center;
 background-color : #98FB98
 }
+
+.movieName {
+  padding: 10px;
+  border : 4px solid black;
+  background-color : #EDAE49
+}
+
+.containerMovieList {
+  display: flex;
+  flex-wrap: wrap
+}
+
+.descBox {
+  position : absolute;
+  border :  2px solid;
+  z-index : 10;
+  background-color :  #6495ED;
+  display : none;
+  
+}
+
+.containerBox:hover .descBox {
+ display: block;
+}
+
 /*div.desc {
     padding: 15px;
     text-align: center;

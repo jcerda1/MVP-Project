@@ -8,9 +8,10 @@ class MovieListEntry extends Component {
   render() {
     return(
      <div  className="gallery" >
-       <div style={{"padding": "10px", "border" : "4px solid black", "backgroundColor" : "#EDAE49"}} >{this.props.movname}</div>
-       <div>
-         <img  onClick={this.props.click} src={`http://image.tmdb.org/t/p/w185/${this.props.pic}`} alt="Smiley face"/>
+       <div onClick={this.props.click} className="movieName">{this.props.movname}</div>
+       <div className="containerBox" style={{"position" : "relative"}}>
+         <div className="descBox">{this.props.desc}</div>
+         <img src={`http://image.tmdb.org/t/p/w185/${this.props.pic}`} alt="Smiley face"/> 
        </div>
      </div>
     )

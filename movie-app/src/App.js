@@ -15,9 +15,8 @@ class App extends Component {
   }
 
  handleClick(e) {
-   console.log(e)
+  console.log(e.target.value)
  }
-
 
   render() {
     return ( 
