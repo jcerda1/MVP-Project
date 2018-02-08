@@ -11,8 +11,10 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.state = {
       value : props.data.results,
-      desc : props.data.results[0]
+      desc : props.data.results[0],
+      currentMovie: ''
     }
+    console.log(this.state)
   } 
 
 componentWillMount() { 
@@ -25,19 +27,19 @@ componentWillMount() {
       return res.json()
     })
     .then((res) => {
-      console.log(res)
+      this.setState({value: res.results})
     })
 
 }
  
  handleClick(e) {
-  console.log(e.target.value)
+  //this.setState({currentMovie: e.target.textContent})
+  console.log(e.target.textContent)
+  this.setState({currentMovie: e.target.textContent.toString()});
   
  }
 
- getInTheaters() {
-   
- }
+
 
   render() {
     return ( 
