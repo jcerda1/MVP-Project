@@ -15,7 +15,7 @@ class App extends Component {
     }
   } 
 
-componentWillMount() {
+componentWillMount() { 
    fetch('http://localhost:3001/search',
      {
        method: 'GET'
