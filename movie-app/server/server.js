@@ -1,3 +1,4 @@
+import tmdb_api_key from "../src/config/tmdb";
 
 const express = require('express')
 const app = express()
@@ -11,7 +12,17 @@ app.use(bodyParser.json())
 app.get('/', (req, res) => res.send('Hello World!'))
 
 app.get('/search', (req, res) => {
-  console.log(req.body)
+  // app.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${tmdb_api_key}&language=en-US&page=1`,
+  //    {
+  //      method: 'GET'
+  //    }
+  //  )
+  //   .then((res)=>{
+  //     return res.json()
+  //   })
+  //   .then((res) => {
+  //     console.log(res)
+  //   })
   res.send('hello') 
 });
 

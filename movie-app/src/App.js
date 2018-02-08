@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import MovieList from "./MovieList";
-import SearchBar from "./SearchBar"
-import TrailerPlayer from "./TrailerPlayer"
-
+import SearchBar from "./SearchBar";
+import TrailerPlayer from "./TrailerPlayer";
+import tmdb_api_key from "./config/tmdb";
 
 class App extends Component { 
   constructor(props) {
@@ -13,6 +13,7 @@ class App extends Component {
       value : props.data.results,
       desc : props.data.results[0]
     }
+    console.log(tmdb_api_key)
   } 
 
 componentWillMount() {
