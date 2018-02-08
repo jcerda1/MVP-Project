@@ -8,16 +8,16 @@ import TrailerPlayer from "./TrailerPlayer";
 class App extends Component { 
   constructor(props) {
     super(props); 
-    this.handleClick = this.handleClick.bind(this)
     this.state = {
-      value : props.data.results,
-      desc : props.data.results[0],
-      currentMovie: ''
-    }
-    console.log(this.state)
+      value : [],
+      //desc : props.data.results[0],
+      currentMovie: "zNCz4mQzfEI"
+    } 
+    this.handleClick = this.handleClick.bind(this)
   } 
 
 componentWillMount() { 
+  var that = this;
    fetch('http://localhost:3001/search',
      {
        method: 'GET'
@@ -27,16 +27,27 @@ componentWillMount() {
       return res.json()
     })
     .then((res) => {
-      this.setState({value: res.results})
+       //console.log(res.results)
+      that.setState({ value: res.results})
+      
     })
-
 }
  
  handleClick(e) {
-  //this.setState({currentMovie: e.target.textContent})
-  console.log(e.target.textContent)
-  this.setState({currentMovie: e.target.textContent.toString()});
-  
+    
+    fetch('http://localhost:3001/trailer',
+     {
+       method: 'GET'
+     }
+   )
+    .then((res)=>{
+      return res.json()
+    })
+    .then((res) => {
+      this.setState({ currentMovie: res.results[0].key})
+      
+    })
+
  }
 
 
@@ -52,7 +63,7 @@ componentWillMount() {
         </nav>
         <div>
           <div >
-            <TrailerPlayer data={this.state.desc}/>
+            <TrailerPlayer movie={this.state.currentMovie} data={this.state.desc}/>
           </div>
           <div>
            <MovieList  click={this.handleClick} name={this.state}/>
