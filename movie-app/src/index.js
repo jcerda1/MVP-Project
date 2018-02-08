@@ -7,3 +7,4 @@ import exampleData from "./exampleData";
 
 ReactDOM.render(<App data={exampleData} />, document.getElementById('root'));
 registerServiceWorker();
+ 

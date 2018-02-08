@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 
 class MovieListEntry extends Component {
-  constructor(props) {
-    super(props);
-    console.log(this.props.click)
-  }
+  // constructor(props) {
+  //   super(props);
+  //   //console.log(this.props)
+  // } 
   render() {
     return(
      <div  className="gallery" >
-       <div onClick={this.props.click} className="movieName">{this.props.movname}</div>
-       <div className="containerBox" style={{"position" : "relative"}}>
+       <div>
+         <div onClick={this.props.click} className="movieName">{this.props.movname}</div>
          <div className="descBox">{this.props.desc}</div>
-         <img src={`http://image.tmdb.org/t/p/w185/${this.props.pic}`} alt="Smiley face"/> 
        </div>
-     </div>
+       <div>
+         <img className="poster" src={`http://image.tmdb.org/t/p/w185/${this.props.pic}`} alt="Smiley face"/> 
+       </div>
+    </div>
+     
     )
   }
 };
 
 
-export default MovieListEntry;  
+export default MovieListEntry;   
