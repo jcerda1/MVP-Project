@@ -17,7 +17,7 @@ class App extends Component {
     this.handleClick = this.handleClick.bind(this)
     this.initialState = this.intialState.bind(this)
     this.postMovie = this.postMovie.bind(this)
-
+    
   } 
 
 componentWillMount() { 
@@ -61,7 +61,6 @@ componentDidUpdate() {
   }
 
  handleClick(e) {
-    console.log(e.target)
 
      fetch('http://localhost:3001/movies',
     {

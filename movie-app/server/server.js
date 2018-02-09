@@ -53,7 +53,13 @@ app.get('/trailer', (req, res) => {
 
 });
 app.post('/movies', (req, res) => {
- 
+  console.log(req.body.target)
+  Movie.findOne({ movieTitle: req.body.target }), (function(err, movie) {
+  if (err)
+  res.send(err);
+  console.log(movie)
+  res.json(movie)
+ });
 })
 
 app.post('/movie', (req, res) => {
