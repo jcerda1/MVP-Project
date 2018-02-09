@@ -1,13 +1,16 @@
-var key = require("../src/config/tmdb")
-var request = require("request");
 
+const request = require("request");
 const express = require('express')
 const app = express()
+const key = require("../src/config/tmdb")
+const mongoose = require('mongoose')
+mongoose.Promise = global.Promise;
+const Movie = require('./movie')
 
-var cors = require('cors') 
+const cors = require('cors') 
 app.use(cors())
  
-var bodyParser = require('body-parser')
+const bodyParser = require('body-parser')
 app.use(bodyParser.json())
 
 
@@ -25,11 +28,10 @@ app.get('/search', (req, res) => {
 
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
-
-  res.send(body);
+    res.send(body);
+  });
 });
-
-});
+ 
 
 app.get('/trailer', (req, res) => {
   console.log(req.body)
@@ -52,3 +54,37 @@ app.get('/trailer', (req, res) => {
 
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'))
+
+
+mongoose
+  .connect('mongodb://localhost/movies', {
+ 
+  }) 
+  .then(() => {
+
+    console.log("Connected to MongoDB")
+  })
+  .catch(err => {
+    console.log(err) 
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

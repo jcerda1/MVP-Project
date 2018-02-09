@@ -14,10 +14,16 @@ class App extends Component {
       currentMovie: "zNCz4mQzfEI"
     } 
     this.handleClick = this.handleClick.bind(this)
+    this.initialState = this.intialState.bind(this)
+
   } 
 
 componentWillMount() { 
-  var that = this;
+  this.initialState()
+}
+
+ intialState() {
+   var that = this;
    fetch('http://localhost:3001/search',
      {
        method: 'GET'
@@ -31,10 +37,10 @@ componentWillMount() {
       that.setState({ value: res.results})
       
     })
-}
+ }
  
  handleClick(e) {
-    
+    console.log(e.target)
     fetch('http://localhost:3001/trailer',
      {
        method: 'GET'
