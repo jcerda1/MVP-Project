@@ -9,7 +9,7 @@ class MovieListEntry extends Component {
     return(
      <div  className="gallery" >
        <div>
-         <div onClick={this.props.click} className="movieName">{this.props.movname}</div>
+         <div onClick={this.props.click}  className="movieName">{this.props.movname}</div>
          <div className="descBox">{this.props.desc}</div>
        </div>
        <div>

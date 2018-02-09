@@ -12,16 +12,21 @@ class App extends Component {
       value : [],
       //desc : props.data.results[0],
       currentMovie: "zNCz4mQzfEI"
+
     } 
     this.handleClick = this.handleClick.bind(this)
     this.initialState = this.intialState.bind(this)
+    this.postMovie = this.postMovie.bind(this)
 
   } 
 
 componentWillMount() { 
   this.initialState()
+  
 }
-
+componentDidUpdate() {
+  this.postMovie()
+}
  intialState() {
    var that = this;
    fetch('http://localhost:3001/search',
@@ -39,20 +44,52 @@ componentWillMount() {
     })
  }
  
+  postMovie(arr) {
+    
+     fetch('http://localhost:3001/movie',
+    {
+      method: 'POST',
+      body: JSON.stringify({movie: this.state.value}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+  .then((res) => {
+    return res.json();
+  })
+  }
+
  handleClick(e) {
     console.log(e.target)
-    fetch('http://localhost:3001/trailer',
-     {
-       method: 'GET'
-     }
-   )
-    .then((res)=>{
-      return res.json()
-    })
-    .then((res) => {
-      this.setState({ currentMovie: res.results[0].key})
+
+     fetch('http://localhost:3001/movies',
+    {
+      method: 'POST',
+      body: JSON.stringify({target: e.target.textContent}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
+  )
+  .then((res) => {
+    return res.json();
+  })
+  .then((res) => {
+    this.setState({currentMovie: res})
+  })
+   //  fetch('http://localhost:3001/trailer',
+   //   {
+   //     method: 'GET'
+   //   }
+   // )
+   //  .then((res)=>{
+   //    return res.json()
+   //  })
+   //  .then((res) => {
+   //    this.setState({ currentMovie: res.results[0].key})
       
-    })
+   //  })
 
  }
 

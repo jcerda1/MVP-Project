@@ -30,11 +30,12 @@ request(options, function (error, response, body) {
   if (error) throw new Error(error);
     res.send(body);
   });
+
 });
  
 
 app.get('/trailer', (req, res) => {
-  console.log(req.body)
+ 
 //   var options = { method: 'GET',
 //   url: {`https://api.themoviedb.org/3/movie/${}/videos?api_key=ffd4156f4041ad96adb54442ab66f2d2&language=en-US`},
 //   qs: 
@@ -51,6 +52,25 @@ app.get('/trailer', (req, res) => {
 // });
 
 });
+app.post('/movies', (req, res) => {
+ 
+})
+
+app.post('/movie', (req, res) => {
+
+  let movieEntry = new Movie();
+    req.body.movie.forEach(entry => {
+      movieEntry.movieId = entry.id
+      movieEntry.movieTitle = entry.title
+      movieEntry.moviePoster = entry.poster_path
+      movieEntry.voteAverage = entry.vote_average
+      movieEntry.video = entry.video
+    })
+    movieEntry.save(function(err) {
+      if (err) console.log(err);
+      console.log("movieEntry successfully added!");
+  });
+})
 
 
 app.listen(3001, () => console.log('Example app listening on port 3001!'))

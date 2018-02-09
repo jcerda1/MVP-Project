@@ -7,11 +7,11 @@ function MovieList(props) {
   	<div className="containerMovieList"> 
       
 	    {props.name.value.map(movie => 
-	      <MovieListEntry key={movie.id} click={props.click} vote={movie.vote_average} movname={movie.title} pic={movie.poster_path} desc={movie.overview}/>
+	      <MovieListEntry id={movie.id} click={props.click} vote={movie.vote_average} movname={movie.title} pic={movie.poster_path} desc={movie.overview}/>
 	    )}
      
     </div>
   )
 };
  
-export default MovieList;    
+export default MovieList;     
