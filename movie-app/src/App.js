@@ -9,15 +9,17 @@ class App extends Component {
   constructor(props) {
     super(props); 
     this.state = {
-      value : [],
-      //desc : props.data.results[0],
-      currentMovie: "zNCz4mQzfEI"
-
+      movieList : props.data.results,
+      desc : props.data.results[0],
+      currentMovie: "Vu4UPet8Nyc",
+      clickedMovie: ""
+      
     } 
-    this.handleClick = this.handleClick.bind(this)
-    this.initialState = this.intialState.bind(this)
-    this.postMovie = this.postMovie.bind(this)
-    
+    //this.handleClick = this.handleClick.bind(this)
+    this.initialState = this.intialState.bind(this);
+    this.postMovie = this.postMovie.bind(this);
+    //this.getId = this.getId.bind(this);
+    console.log(this.state)
   } 
 
 componentWillMount() { 
@@ -26,10 +28,12 @@ componentWillMount() {
 }
 componentDidUpdate() {
   this.postMovie()
+
+ 
 }
  intialState() {
    var that = this;
-   fetch('http://localhost:3001/search',
+   fetch('http://localhost:3001/api/initial',
      {
        method: 'GET'
      }
@@ -44,39 +48,48 @@ componentDidUpdate() {
     })
  }
  
-  postMovie(arr) {
+  postMovie(e) {
     
-     fetch('http://localhost:3001/movie',
-    {
-      method: 'POST',
-      body: JSON.stringify({movie: this.state.value}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-  )
-  .then((res) => {
-    return res.json();
-  })
+  //    fetch('http://localhost:3001/api/movie',
+  //   {
+  //     method: 'POST',
+  //     body: JSON.stringify({movie: this.state.value}),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }
+  // )
+  // .then((res) => {
+  //   return res.json();
+  // })
+  }
+
+  getId = (id) => {
+    
+    this.setState({clickedMovie: id})
+    console.log(this.state)
   }
 
  handleClick(e) {
+  
+  //console.log(this.props.movie.id)
+  //this.setState({clickedMovie: this.props.movie.id})
 
-     fetch('http://localhost:3001/movies',
-    {
-      method: 'POST',
-      body: JSON.stringify({target: e.target.textContent}),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    }
-  )
-  .then((res) => {
-    return res.json();
-  })
-  .then((res) => {
-    this.setState({currentMovie: res})
-  })
+  //    fetch('http://localhost:3001/movies',
+  //   {
+  //     method: 'POST',
+  //     body: JSON.stringify({target: e.target.textContent}),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     }
+  //   }
+  // )
+  // .then((res) => {
+  //   return res.json();
+  // })
+  // .then((res) => {
+  //   this.setState({currentMovie: res})
+  //})
    //  fetch('http://localhost:3001/trailer',
    //   {
    //     method: 'GET'
@@ -88,7 +101,7 @@ componentDidUpdate() {
    //  .then((res) => {
    //    this.setState({ currentMovie: res.results[0].key})
       
-   //  })
+   //  }) 
 
  }
 
@@ -108,7 +121,7 @@ componentDidUpdate() {
             <TrailerPlayer movie={this.state.currentMovie} data={this.state.desc}/>
           </div>
           <div>
-           <MovieList  click={this.handleClick} name={this.state}/>
+           <MovieList  click={this.getId} movies={this.state.movieList}/>
           </div>
         </div>
       </div>

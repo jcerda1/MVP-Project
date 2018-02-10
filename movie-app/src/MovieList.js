@@ -3,11 +3,12 @@ import MovieListEntry from "./MovieListEntry";
 
 
 function MovieList(props) {
+  
   return(
   	<div className="containerMovieList"> 
       
-	    {props.name.value.map(movie => 
-	      <MovieListEntry id={movie.id} click={props.click} vote={movie.vote_average} movname={movie.title} pic={movie.poster_path} desc={movie.overview}/>
+	    {props.movies.map(movie => 
+	      <MovieListEntry movie={movie} key={movie.id} click={props.click}/>
 	    )}
      
     </div>
