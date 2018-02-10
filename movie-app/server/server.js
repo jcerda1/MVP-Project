@@ -43,7 +43,7 @@ router.route('/trailer')
   
   var options = { 
     method: 'GET',
-    url: `https://api.themoviedb.org/3/movie/${req.body.clickedMovie}/videos?api_key=${key.tmdb}&language=en-US`,
+    url: `https://api.themoviedb.org/3/movie/${req.body.clickedMovie}/videos`,
     qs: 
     { api_key:  key.tmdb,
       language: 'en-US',
@@ -63,9 +63,19 @@ router.route("/getPopular")
   .get((req, res) => {
     var options = {
       method: 'GET',
-      url: `https://api.themoviedb.org/3/movie/popular?api_key=&language=en-US&page=1`
+      url: `https://api.themoviedb.org/3/movie/popular`, 
+      qs: {
+        api_key: key.tmdb, 
+        language: 'en-US',
+        page: 1
+      },
+      header: {'Cache-Control': 'no-cache'}
     }
+  request(options, function(err, response, body) {
+    if(err) throw new Error(error);
+    res.send(body)
   })
+})
 
 
 // router.route('/movie')

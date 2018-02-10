@@ -16,6 +16,7 @@ class App extends Component {
       
     } 
     this.initialState = this.intialState.bind(this);
+    this.getPopular = this.getPopular.bind(this)
   } 
 
 componentWillMount() { 
@@ -66,7 +67,8 @@ componentWillMount() {
     this.getVid(id)
   }
 
- getPopular() {
+ getPopular(e) {
+   e.preventDefault()
    fetch('http://localhost:3001/api/getPopular',
      {
        method: "GET"
@@ -75,6 +77,7 @@ componentWillMount() {
        return res.json()
      })
      .then(res => {
+      console.log(res)
        this.setState({movieList: res.results})
      })
  }
@@ -87,7 +90,7 @@ componentWillMount() {
         <h1 className="movieApp">Movie App</h1>
         <nav className="navbar">
           <div>
-           <SearchBar/>
+           <SearchBar getPop={this.getPopular}/>
           </div>
         </nav>
         <div>
