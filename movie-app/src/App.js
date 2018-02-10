@@ -17,6 +17,7 @@ class App extends Component {
     } 
     this.initialState = this.intialState.bind(this);
     this.getPopular = this.getPopular.bind(this)
+    console.log(this.state.movieList)
   } 
 
 componentWillMount() { 
@@ -56,8 +57,9 @@ componentWillMount() {
       return res.json();
     })
     .then((res) => {
-      console.log(res.results[0].key)
-      this.setState({currentMovie: res.results[0].key})
+     let trailer = res.results[0] ? res.results[0].key : "dQw4w9WgXcQ"
+
+      this.setState({currentMovie: trailer})
     })
   }
 
