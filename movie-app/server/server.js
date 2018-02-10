@@ -38,24 +38,26 @@ router.route('/initial')
 });
  
 
-// app.get('/trailer', (req, res) => {
-//  -----------------------------------------------
-// //   var options = { method: 'GET',
-// //   url: {`https://api.themoviedb.org/3/movie/${}/videos?api_key=ffd4156f4041ad96adb54442ab66f2d2&language=en-US`},
-// //   qs: 
-// //    { api_key:  key.tmdb,
-// //      language: 'en-US',
-// //      page: '1' },
-// //   headers: 
-// //    { 'Cache-Control': 'no-cache' } };
+router.route('/trailer')
+  .post((req, res) => {
+  
+  var options = { 
+    method: 'GET',
+    url: `https://api.themoviedb.org/3/movie/${req.body.clickedMovie}/videos?api_key=ffd4156f4041ad96adb54442ab66f2d2&language=en-US`,
+    qs: 
+    { api_key:  key.tmdb,
+      language: 'en-US',
+      page: '1' },
+    headers: 
+   { 'Cache-Control': 'no-cache' } };
 
-// // request(options, function (error, response, body) {
-// //   if (error) throw new Error(error);
+request(options, function (error, response, body) {
+  if (error) throw new Error(error);
 
-// //   res.send(body);
-// // });
-// --------------------------------------------
-// });
+  res.send(body);
+});
+
+});
 // app.post('/movies', (req, res) => {
 //   console.log(req.body.target)
 //   Movie.find({ movieTitle: req.body.target }).then(inst => {
@@ -72,13 +74,13 @@ router.route('/initial')
 router.route('/movie')
   .post((req, res) => {
   let movieEntry = new Movie();
-    req.body.movie.forEach(entry => {
+    
       movieEntry.movieId = entry.id
       movieEntry.movieTitle = entry.title
       movieEntry.moviePoster = entry.poster_path
       movieEntry.voteAverage = entry.vote_average
       movieEntry.video = entry.video
-    })
+    
     movieEntry.save(function(err) {
       if (err) console.log(err);
       console.log("movieEntry successfully added!");

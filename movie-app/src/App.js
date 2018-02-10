@@ -17,9 +17,9 @@ class App extends Component {
     } 
     //this.handleClick = this.handleClick.bind(this)
     this.initialState = this.intialState.bind(this);
-    this.postMovie = this.postMovie.bind(this);
+    
     //this.getId = this.getId.bind(this);
-    console.log(this.state)
+    
   } 
 
 componentWillMount() { 
@@ -27,7 +27,7 @@ componentWillMount() {
   
 }
 componentDidUpdate() {
-  this.postMovie()
+  
 
  
 }
@@ -42,32 +42,36 @@ componentDidUpdate() {
       return res.json()
     })
     .then((res) => {
-       //console.log(res.results)
-      that.setState({ value: res.results})
+       
+      that.setState({ movieList: res.results})
       
     })
  }
  
-  postMovie(e) {
-    
-  //    fetch('http://localhost:3001/api/movie',
-  //   {
-  //     method: 'POST',
-  //     body: JSON.stringify({movie: this.state.value}),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }
-  // )
-  // .then((res) => {
-  //   return res.json();
-  // })
+  getVid(id) {
+    fetch('http://localhost:3001/api/trailer',
+      {
+        method: 'POST',
+        body: JSON.stringify({clickedMovie: id}),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    .then((res) => {
+
+      return res.json();
+    })
+    .then((res) => {
+      console.log(res.results[0].key)
+      this.setState({currentMovie: res.results[0].key})
+    })
   }
 
   getId = (id) => {
     
     this.setState({clickedMovie: id})
-    console.log(this.state)
+    this.getVid(id)
   }
 
  handleClick(e) {
