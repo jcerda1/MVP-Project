@@ -43,7 +43,7 @@ router.route('/trailer')
   
   var options = { 
     method: 'GET',
-    url: `https://api.themoviedb.org/3/movie/${req.body.clickedMovie}/videos?api_key=ffd4156f4041ad96adb54442ab66f2d2&language=en-US`,
+    url: `https://api.themoviedb.org/3/movie/${req.body.clickedMovie}/videos?api_key=${key.tmdb}&language=en-US`,
     qs: 
     { api_key:  key.tmdb,
       language: 'en-US',
@@ -58,34 +58,31 @@ request(options, function (error, response, body) {
 });
 
 });
-// app.post('/movies', (req, res) => {
-//   console.log(req.body.target)
-//   Movie.find({ movieTitle: req.body.target }).then(inst => {
-   
-  
-//   // , (function(err, movie) {
-//   // if (err)
-//   // res.send(err);
-//   // console.log(movie)
-//   res.json(inst)
-//  });
-// })
 
-router.route('/movie')
-  .post((req, res) => {
-  let movieEntry = new Movie();
+router.route("/getPopular")
+  .get((req, res) => {
+    var options = {
+      method: 'GET',
+      url: `https://api.themoviedb.org/3/movie/popular?api_key=&language=en-US&page=1`
+    }
+  })
+
+
+// router.route('/movie')
+//   .post((req, res) => {
+//   let movieEntry = new Movie();
     
-      movieEntry.movieId = entry.id
-      movieEntry.movieTitle = entry.title
-      movieEntry.moviePoster = entry.poster_path
-      movieEntry.voteAverage = entry.vote_average
-      movieEntry.video = entry.video
+//       movieEntry.movieId = entry.id
+//       movieEntry.movieTitle = entry.title
+//       movieEntry.moviePoster = entry.poster_path
+//       movieEntry.voteAverage = entry.vote_average
+//       movieEntry.video = entry.video
     
-    movieEntry.save(function(err) {
-      if (err) console.log(err);
-      console.log("movieEntry successfully added!");
-  });
-})
+//     movieEntry.save(function(err) {
+//       if (err) console.log(err);
+//       console.log("movieEntry successfully added!");
+//   });
+// })
 
 // --------------
 app.listen(3001, () => console.log('Example app listening on port 3001!'))

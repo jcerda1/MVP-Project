@@ -14,7 +14,7 @@ class SearchBar extends Component {
     return ( 
       <form >
         <div>
-         <button>In Theaters</button> <button>By Title</button> <button>By Year</button> 
+         <button>Most Popular</button> <button>By Title</button> <button>By Year</button> 
         </div>
         <input className="SearchBar" type="text" placeholder="Search.."/><button className="button">Search</button>
       </form>

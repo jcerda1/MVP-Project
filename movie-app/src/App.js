@@ -11,26 +11,18 @@ class App extends Component {
     this.state = {
       movieList : props.data.results,
       desc : props.data.results[0],
-      currentMovie: "Vu4UPet8Nyc",
+      currentMovie: "zNCz4mQzfEI",
       clickedMovie: ""
       
     } 
-    //this.handleClick = this.handleClick.bind(this)
     this.initialState = this.intialState.bind(this);
-    
-    //this.getId = this.getId.bind(this);
-    
   } 
 
 componentWillMount() { 
   this.initialState()
   
 }
-componentDidUpdate() {
-  
 
- 
-}
  intialState() {
    var that = this;
    fetch('http://localhost:3001/api/initial',
@@ -74,39 +66,17 @@ componentDidUpdate() {
     this.getVid(id)
   }
 
- handleClick(e) {
-  
-  //console.log(this.props.movie.id)
-  //this.setState({clickedMovie: this.props.movie.id})
-
-  //    fetch('http://localhost:3001/movies',
-  //   {
-  //     method: 'POST',
-  //     body: JSON.stringify({target: e.target.textContent}),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     }
-  //   }
-  // )
-  // .then((res) => {
-  //   return res.json();
-  // })
-  // .then((res) => {
-  //   this.setState({currentMovie: res})
-  //})
-   //  fetch('http://localhost:3001/trailer',
-   //   {
-   //     method: 'GET'
-   //   }
-   // )
-   //  .then((res)=>{
-   //    return res.json()
-   //  })
-   //  .then((res) => {
-   //    this.setState({ currentMovie: res.results[0].key})
-      
-   //  }) 
-
+ getPopular() {
+   fetch('http://localhost:3001/api/getPopular',
+     {
+       method: "GET"
+     })
+     .then(res => {
+       return res.json()
+     })
+     .then(res => {
+       this.setState({movieList: res.results})
+     })
  }
 
 
